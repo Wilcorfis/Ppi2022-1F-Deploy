@@ -1,0 +1,98 @@
+
+@media screen and (max-width: 330px) {
+  /*
+  .sideway span {
+    vertical-align: top;
+    display: inline-block;
+    transform: translatey(100%) rotate(-90deg);
+    transform-origin: 0 0;
+  }
+  .sideway span:before {
+    content: '';
+    padding-top:100%;
+    float: left;
+
+  }*/
+  .operacion button{
+    display: flex;
+    justify-content: start;
+ 
+  }
+
+}
+
+table{
+  table-layout: fixed;
+ 
+}
+
+th{
+  border: 1px solid blue;
+  width: 150px;
+  word-wrap: break-word;
+}
+
+#ctmain{
+  display: none;
+}
+
+.pagination li:hover{
+  cursor: pointer;
+}
+
+
+/* THE END OF THE IMPORTANT STUFF */
+
+/* Basic Styling */
+
+
+/* border-pagination */
+.b-pagination-outer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+  display: flex
+}
+#border-pagination {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center
+}
+#border-pagination li {
+  display: inline;
+
+}
+#border-pagination li a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  float: left;
+
+}
+#border-pagination li a {
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s
+}
+#border-pagination li a.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+#border-pagination li a:hover:not(.active) {
+  background: #ddd;
+}
+
+
+
+
+
+
+th{
+    background-color: black;
+}
+
+
+
+

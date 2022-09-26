@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./scripts/validardash.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../../styles/dashboard.css">
+  <script src="../../interaccion/sidebardash.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+
+
+</head>
+
+<body>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- sidebar -->
+      <div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
+        <h1 class="text-primary d-flex my-4 justify-content-center"><img width="110px" height="80px" src="../../image/ambrosia.jpg"></img></h1>
+        <div class="list-group rounded-0">
+          <a href="./mesero.html"
+            class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
+            <span class="bi bi-border-all"></span>
+            <span class="ml-2">Mesero</span>
+          </a>
+
+
+          <a href="../crud_mesa2.html" class="list-group-item list-group-item-action border-0 align-items-center">
+            <span><img class="peq" src="../icons/01.png"></span>
+            <span class="ml-2">Mesas</span>
+          </a>
+
+          <button
+            class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center"
+            data-toggle="collapse" data-target="#purchase-collapse">
+            <div>
+              <span><img class="peq" src="../icons/03.png"></span>
+              <span class="ml-2">Pedidos</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+          </button>
+          <div class="collapse" id="purchase-collapse" data-parent="#sidebar">
+            <div class="list-group">
+              <a href="../pedido2.html" class="list-group-item list-group-item-action border-0 pl-5">Nuevo pedido</a>
+              <a href="../detalle_pedido2.html" class="list-group-item list-group-item-action border-0 pl-5">Agregar
+                Platos</a>
+            </div>
+          </div>
+          <a href="../pagos3.html" class="list-group-item list-group-item-action border-0 align-items-center">
+            <span><img class="peq" src="../icons/10.png"></span>
+            <span class="ml-2">Pagos</span>
+          </a>
+        </div>
+      </div>
+      <!-- overlay to close sidebar on small screens -->
+      <div class="w-100 vh-100 position-fixed overlay d-none" id="sidebar-overlay"></div>
+      <!-- note: in the layout margin auto is the key as sidebar is fixed -->
+      <div class="col-md-9 col-lg-10 ml-md-auto px-0">
+        <!-- top nav -->
+        <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
+          <!-- close sidebar -->
+          <button class="btn py-0 d-lg-none" id="open-sidebar">
+            <span class="bi bi-list text-primary h3"></span>
+          </button>
+          <div class="dropdown ml-auto">
+            <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-toggle="dropdown"
+              aria-expanded="false">
+              <span class="bi bi-person text-primary h4"></span>
+              <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
+              <span id="log" style="color: black;"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
+              <a class="dropdown-item" onclick="cerrar()">Cerrar sesion</a>
+              <a class="dropdown-item" href="#">Configuracion</a>
+            </div>
+          </div>
+        </nav>
+        <div class="row">
+          <div class="mx-auto mt-5 col-md-6">
+            <div class="card-body">
+
+              <div class="container">
+                <div class="panel-heading">
+                  <h3 style="color: azure;" class="panel-title">Reporte</h3>
+           
+                  <button onclick="toggle8()" id="op10" class="btn btn-primary"><span></span>
+                    izquierda</button>
+                  <button onclick="toggle9()" id="op20" class="btn btn-primary"><span></span>
+                    derecha</button>
+
+
+                  <!--		Show Numbers Of Rows 		-->
+
+       
+                  <div id="ctdtable2" class="panel panel-primary filterable table-responsive ">
+                    <table id="ctable2" class="table table-bordered table-hover ">
+                      <thead style="background-color: rgb(0, 0, 0)">
+                        <tr class="filters">
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="fecha"
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="estado"
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="nombrecliente"
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="apellidocliente" 
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="nombremesero"
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="apellidomesero"
+                                disabled></span></th>
+                          <th class="sideway"><span><input type="text" class="form-control" placeholder="codigomesa"
+                                disabled></span></th>
+
+                          <th class="sideway"><span>
+                              <div class="pull-right">
+                                <button class="btn btn-default btn-xs btn-filter btn-primary"><span
+                                    class="glyphicon glyphicon-filter"></span>
+                                  Buscar</button>
+                              </div>
+                            </span></th>
+
+                        </tr>
+
+                      </thead>
+                      <tbody style="background-color: rgb(0, 0, 0)" id="form-list-client-body2">
+
+                      </tbody>
+                    </table>
+                  </div>
+
+  
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+        <!-- main content -->
+        <main class="container-fluid">
+          <!--
+              <section class="row">
+                <div class="col-md-6 col-lg-4">
+                  
+                  <article class="p-4 rounded shadow-sm border-left
+                     mb-4">
+                    <a href="#" class="d-flex align-items-center">
+                      <span class="bi bi-box h5"></span>
+                      <h5 class="ml-2">Platos</h5>
+                    </a>
+                  </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <article class="p-4 rounded shadow-sm border-left mb-4">
+                    <a href="#" class="d-flex align-items-center">
+                      <span class="bi bi-person h5"></span>
+                      <h5 class="ml-2">Clientes</h5>
+                    </a>
+                  </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <article class="p-4 rounded shadow-sm border-left mb-4">
+                    <a href="#" class="d-flex align-items-center">
+                      <span class="bi bi-person-check h5"></span>
+                      <h5 class="ml-2">Ventas</h5>
+                    </a>
+                  </article>
+                </div>
+              </section>-->
+
+          <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
+
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/reportmesero.js">
+
+  </script>
+  <script src="../../interaccion/perfil.js"></script>
+  <script src="./scripts/ruta_mesero.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      var user = localStorage.getItem("sesion")
+      validarDashmesero(user)
+      const w = new Date()
+      if (w.getTime() > localStorage.getItem("time")) {
+        localStorage.removeItem("id")
+        localStorage.removeItem("sesion")
+        localStorage.removeItem("time")
+      }else if(w.getTime()<localStorage.getItem("time")){
+        localStorage.setItem("time",localStorage.getItem("time")+60000)
+
+    } 
+
+
+    })
+  </script>
+    <script async src="../../interaccion/tablefilter.js"></script>
+
+    
+    <script src="../../interaccion/toggle.js"></script>
+
+</body>
+
+</html>

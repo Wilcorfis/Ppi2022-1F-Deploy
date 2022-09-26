@@ -1,0 +1,14 @@
+45345  
+45861
+106876
+934332
+
+cocinero
+mesero
+administrador
+cajero
+
+select fecha,estado,cliente.primer_nombre,cliente.primer_apellido,empleado.primer_nombre as"nombre de mesero",
+empleado.primer_apellido as"apellido de mesero",mesa.codigo as"codigo de mesa" from pedido inner join cliente on fk_id_cliente=id_cliente
+inner join empleado on fk_id_empleado=id_empleado inner join mesa on fk_id_mesa=id_mesa where empleado.identificacion=106876
+

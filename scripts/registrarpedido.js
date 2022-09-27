@@ -270,7 +270,7 @@ async function getClientes() {
 }
 async function getEmpleados() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/empleados');
+    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/empleadosw');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

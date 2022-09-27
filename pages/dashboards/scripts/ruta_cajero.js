@@ -5,7 +5,7 @@ function expirecajero() {
         localStorage.removeItem("sesion")
         localStorage.removeItem("time")      
     }else if(w.getTime()<localStorage.getItem("time")){
-        localStorage.setItem("time",localStorage.getItem("time")+60000)
+        localStorage.setItem("time",parseInt(localStorage.getItem("time"))+60000)
 
     }       
 }

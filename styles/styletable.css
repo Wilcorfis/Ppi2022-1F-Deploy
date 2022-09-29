@@ -25,6 +25,9 @@ table{
   table-layout: fixed;
  
 }
+#ctable2{
+  table-layout: fixed;
+}
 
 th{
   border: 1px solid blue;

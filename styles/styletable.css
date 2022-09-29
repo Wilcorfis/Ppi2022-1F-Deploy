@@ -26,7 +26,10 @@ table{
  
 }
 #ctable2{
-  table-layout: fixed;
+  width: 100%;
+}
+#ctdtable2{
+  width: 100%;
 }
 
 th{

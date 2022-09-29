@@ -15,7 +15,7 @@ let receta = document.getElementById("fk_id_receta");
  
 
 const urlingrediente = "https://pedidoambrosia.herokuapp.com/api/ingrediente";
-const urlreceta= "https://pedidoambrosia.herokuapp.com/receta";
+const urlreceta= "https://pedidoambrosia.herokuapp.com/api/receta";
 
 var myIndexid;
 var myIndex;

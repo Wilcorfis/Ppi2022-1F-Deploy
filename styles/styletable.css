@@ -26,7 +26,7 @@ table{
  
 }
 #ctable2{
-  display: grid;
+  display: table-cell;
 }
 
 

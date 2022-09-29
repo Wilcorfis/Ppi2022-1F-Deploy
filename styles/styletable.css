@@ -25,6 +25,9 @@ table{
   table-layout: fixed;
  
 }
+#ctable2{
+  display: grid;
+}
 
 
 

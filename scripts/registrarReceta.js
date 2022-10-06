@@ -113,8 +113,11 @@ const ShowTabla = (data, container) => {
         for (let a in data[i]) {
             var mytd = document.createElement("td")
             //mytd.setAttribute('data-th',a)
-
             mytd.innerHTML = data[i][a];
+            if (a.includes('id_receta')) {
+                mytd.style.display="none"
+
+            }
             if (a.includes('fk_id_plato')) {
                 mytd.innerHTML = "";
                 var mya = document.createElement("span")

@@ -122,6 +122,10 @@ const ShowTabla = (data, container) => {
             var mytd = document.createElement("td")
             //mytd.setAttribute('data-th',a)
             mytd.innerHTML = data[i][a];
+            if (a.includes('id_categoria')) {
+                mytd.style.display="none"
+
+            }
             myTr.appendChild(mytd)
         }
 

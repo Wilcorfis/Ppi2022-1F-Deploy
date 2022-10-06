@@ -12,10 +12,10 @@ let tabla = document.getElementById('form-list-client-body');
 
 let ingrediente = document.getElementById("fk_id_ingrediente");
 let receta = document.getElementById("fk_id_receta");
- 
+
 
 const urlingrediente = "https://pedidoambrosia.herokuapp.com/api/ingrediente";
-const urlreceta= "https://pedidoambrosia.herokuapp.com/api/receta";
+const urlreceta = "https://pedidoambrosia.herokuapp.com/api/receta";
 
 var myIndexid;
 var myIndex;
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var pathname = window.location.pathname;
     var user = localStorage.getItem("sesion")
     var ruta = pathname.split("/")[pathname.split("/").length - 1].split(".")[0]
-    validarRuta(ruta,user)
-    validarRuta1(ruta,user)
+    validarRuta(ruta, user)
+    validarRuta1(ruta, user)
     document.getElementById("btn-save").addEventListener('click', validarFormulario);
 });
 //voy aqui
@@ -38,7 +38,7 @@ function borrarCampos() {
     document.getElementById("fk_id_receta").value = ""
     document.getElementById("cantidad").value = ""
     document.getElementById("unidad").value = ""
-   
+
 }
 
 function llenarCampos() {
@@ -48,7 +48,7 @@ function llenarCampos() {
         fk_id_receta: document.getElementById("fk_id_receta").value,
         cantidad: document.getElementById("cantidad").value,
         unidad: document.getElementById("unidad").value
-       
+
     }
 
     return nuevoEmpleado;
@@ -61,8 +61,8 @@ function validarFormulario(evento) {
     let vacio = false;
     let limite = false;
     let falta = []
-    
-    for (var i = 0; i < campos.length ; i++) {
+
+    for (var i = 0; i < campos.length; i++) {
         var campo = document.getElementById(campos[i]).value;
         if (campo.length == 0) {
             vacio = true;
@@ -72,7 +72,7 @@ function validarFormulario(evento) {
     }
 
     if (vacio) {
-        alert("los campos "+falta.toString()+" no deben estar vacios ")
+        alert("los campos " + falta.toString() + " no deben estar vacios ")
         return;
     }
     if (limite) {
@@ -87,8 +87,8 @@ function validarFormularioUpdate(evento) {
     let vacio = false;
     let limite = false;
     let falta = []
-  
-    for (var i = 0; i < campos.length ; i++) {
+
+    for (var i = 0; i < campos.length; i++) {
         var campo = document.getElementById(campos[i]).value;
         if (campo.length == 0) {
             vacio = true;
@@ -98,7 +98,7 @@ function validarFormularioUpdate(evento) {
     }
 
     if (vacio) {
-        alert("los campos "+falta.toString()+" no deben estar vacios ")
+        alert("los campos " + falta.toString() + " no deben estar vacios ")
         return;
     }
     if (limite) {
@@ -172,24 +172,29 @@ const ShowTabla = (data, container) => {
         for (let a in data[i]) {
             var mytd = document.createElement("td")
             //mytd.setAttribute('data-th',a)
-
             mytd.innerHTML = data[i][a];
+            if (a.includes('id_receta_ingrediente')) {
+                mytd.style.display="none"
+
+            }
+            
+            
 
             if (a.includes('fk_id_ingrediente')) {
                 mytd.innerHTML = "";
                 var mya = document.createElement("span")
                 mya.innerHTML = ""
-                getnombre(urlingrediente,data[i][a],mya);
+                getnombre(urlingrediente, data[i][a], mya);
                 mytd.appendChild(mya)
             }
             if (a.includes('fk_id_receta')) {
                 mytd.innerHTML = "";
                 var mya = document.createElement("span")
                 mya.innerHTML = ""
-                getnombrereceta(urlreceta,data[i][a],mya);
+                getnombrereceta(urlreceta, data[i][a], mya);
                 mytd.appendChild(mya)
             }
-        
+
             myTr.appendChild(mytd)
         }
 
@@ -197,7 +202,7 @@ const ShowTabla = (data, container) => {
 
 
         var actionTd = document.createElement("td")
-        actionTd.setAttribute('class','operacion')
+        actionTd.setAttribute('class', 'operacion')
 
         var editBtn = document.createElement("button")
         var btn = document.createElement("i")
@@ -278,7 +283,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function addEmpleado() {
     let nuevorecetaIngrediente = llenarCampos();
-    
+
 
     fetch(urlbase, {
         method: 'POST',
@@ -294,7 +299,7 @@ function addEmpleado() {
             swal("Creado correctamente!");
         });
 
-        toggle2();
+    toggle2();
 }
 function updateEmpleado() {
     let modificarecetaIngrediente = llenarCampos();
@@ -323,7 +328,7 @@ function editEmpleado(i) {
     updatebtn.setAttribute("class", "btn btn-sm btn-success")
 
     updatebtn.setAttribute("id", "btn-save2")
-  
+
     document.getElementById("saveupdate").appendChild(updatebtn);
     document.getElementById("btn-save2").addEventListener('click', validarFormularioUpdate);
 
@@ -343,7 +348,7 @@ function editEmpleado(i) {
     document.getElementById("cantidad").value = receta_ingredientes[i].cantidad
     document.getElementById("unidad").value = receta_ingredientes[i].unidad
 
-    document.getElementById("muestradiv").style.display="none";
+    document.getElementById("muestradiv").style.display = "none";
     toggle();
 }
 
@@ -352,15 +357,15 @@ function updEmpleado() {
 
     } else {
         var crbtn = document.createElement("button")
-        crbtn.innerHTML = "Registrar";    
+        crbtn.innerHTML = "Registrar";
         crbtn.setAttribute("class", "btn btn-primary btn-block")
         crbtn.setAttribute("id", "btn-save")
         document.getElementById("saveupdate").innerHTML = ""
-        
+
         document.getElementById("saveupdate").appendChild(crbtn);
         document.getElementById("btn-save").addEventListener('click', validarFormulario);
     }
-    document.getElementById("muestradiv").style.display="inline-block";
+    document.getElementById("muestradiv").style.display = "inline-block";
 }
 function cancelSeleccion() {
     var crbtn = document.createElement("button")
@@ -374,11 +379,11 @@ function cancelSeleccion() {
     document.getElementById("btn-save").addEventListener('click', validarFormulario);
     toggle2();
     borrarCampos();
-    document.getElementById("muestradiv").style.display="inline-block";
+    document.getElementById("muestradiv").style.display = "inline-block";
 
 }
 
-function getnombre(url,i,t) {
+function getnombre(url, i, t) {
     fetch(url + "/" + i, {
         method: 'GET',
         headers: {
@@ -386,10 +391,10 @@ function getnombre(url,i,t) {
         }
     }).then(response => response.json())
         .then(json => {
-            t.innerHTML=json[0].nombre
+            t.innerHTML = json[0].nombre
         });
 }
-function getnombrereceta(url,i,t) {
+function getnombrereceta(url, i, t) {
     fetch(url + "/" + i, {
         method: 'GET',
         headers: {
@@ -397,7 +402,7 @@ function getnombrereceta(url,i,t) {
         }
     }).then(response => response.json())
         .then(json => {
-            t.innerHTML=json[0].nombre_receta
+            t.innerHTML = json[0].nombre_receta
         });
 }
 

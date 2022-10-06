@@ -308,6 +308,10 @@ const ShowTabla = (data, container) => {
             var mytd = document.createElement("td")
             //mytd.setAttribute('data-th',a)
             mytd.innerHTML = data[i][a];
+            if (a.includes('id_cliente')) {
+                mytd.style.display="none"
+
+            }
 
             /*if (a.includes('fk_id_municipio')) {
                 mytd.innerHTML = "";

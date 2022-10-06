@@ -487,6 +487,10 @@ const ShowTabla = (data, container) => {
                 //mytd.setAttribute('data-th', a)
 
                 mytd.innerHTML = data[i][a];
+                if (a.includes('id_empleado')) {
+                    mytd.style.display="none"
+    
+                }
 
                 if (a.includes('fecha_nacimiento')) {
                     mytd.innerHTML = data[i][a].toString().split("T")[0];

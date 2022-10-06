@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function borrarCampos() {
     document.getElementById("nombre").value = ""
-    
+
 }
 function llenarCampos() {
     var nuevoEmpleado = {
@@ -32,7 +32,7 @@ function validarFormulario(evento) {
     let vacio = false;
     let limite = false;
     let falta = []
-    for (var i = 0; i < campos.length ; i++) {
+    for (var i = 0; i < campos.length; i++) {
         var campo = document.getElementById(campos[i]).value;
         if (campo.length == 0) {
             vacio = true;
@@ -41,7 +41,7 @@ function validarFormulario(evento) {
 
     }
     if (vacio) {
-        alert("los campos "+falta.toString()+" no deben estar vacios ")
+        alert("los campos " + falta.toString() + " no deben estar vacios ")
         return;
     }
     if (limite) {
@@ -55,7 +55,7 @@ function validarFormularioUpdate(evento) {
     let vacio = false;
     let limite = false;
     let falta = []
-    for (var i = 0; i < campos.length ; i++) {
+    for (var i = 0; i < campos.length; i++) {
         var campo = document.getElementById(campos[i]).value;
         if (campo.length == 0) {
             vacio = true;
@@ -64,7 +64,7 @@ function validarFormularioUpdate(evento) {
     }
 
     if (vacio) {
-        alert("los campos "+falta.toString()+" no deben estar vacios ")
+        alert("los campos " + falta.toString() + " no deben estar vacios ")
         return;
     }
     if (limite) {
@@ -83,10 +83,14 @@ const ShowTabla = (data, container) => {
             var mytd = document.createElement("td")
             //mytd.setAttribute('data-th',a)
             mytd.innerHTML = data[i][a];
+            if (a.includes('id_ingrediente')) {
+                mytd.style.display = "none"
+
+            }
             myTr.appendChild(mytd)
         }
         var actionTd = document.createElement("td")
-        actionTd.setAttribute('class','operacion')
+        actionTd.setAttribute('class', 'operacion')
         var editBtn = document.createElement("button")
         var btn = document.createElement("i")
         btn.setAttribute("class", "fa fa-edit")
@@ -125,18 +129,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     var pathname = window.location.pathname;
     var user = localStorage.getItem("sesion")
     var ruta = pathname.split("/")[pathname.split("/").length - 1].split(".")[0]
-    validarRuta(ruta,user)
-    validarRuta1(ruta,user)
+    validarRuta(ruta, user)
+    validarRuta1(ruta, user)
     fetchText().then(res => {
         ingredientes.push(...res);
         ShowTabla(ingredientes, tabla)
     })
-   
+
 })
 
 function addEmpleado() {
     let nuevoIngrediente = llenarCampos();
-    
+
 
     fetch(urlbase, {
         method: 'POST',
@@ -152,13 +156,13 @@ function addEmpleado() {
                 ingredientes.push(json[0]);
                 ShowTabla(ingredientes, tabla)
                 swal("Creado correctamente!");
-                
+
             } else {
                 swal("Ya existe el nombre del ingrediente!");
             }
 
         });
-        toggle2()
+    toggle2()
 }
 function updateEmpleado() {
     let modificaIngrediente = llenarCampos();
@@ -176,7 +180,7 @@ function updateEmpleado() {
                 ingredientes[myIndex] = json[0];
                 ShowTabla(ingredientes, tabla)
                 swal("Actualizado correctamente!");
-                
+
             } else {
                 swal("Ya existe el nombre del ingrediente!");
             }
@@ -204,9 +208,9 @@ function editEmpleado(i) {
 
 
     document.getElementById("nombre").value = ingredientes[i].nombre
-    document.getElementById("muestradiv").style.display="none";
+    document.getElementById("muestradiv").style.display = "none";
     toggle()
- 
+
 
 
 
@@ -216,14 +220,14 @@ function updEmpleado() {
 
     } else {
         var crbtn = document.createElement("button")
-        crbtn.innerHTML = "Registrar";      
+        crbtn.innerHTML = "Registrar";
         crbtn.setAttribute("class", "btn btn-primary btn-block")
         crbtn.setAttribute("id", "btn-save")
         document.getElementById("saveupdate").innerHTML = ""
         document.getElementById("saveupdate").appendChild(crbtn);
         document.getElementById("btn-save").addEventListener('click', validarFormulario);
     }
-    document.getElementById("muestradiv").style.display="inline-block";
+    document.getElementById("muestradiv").style.display = "inline-block";
 }
 function cancelSeleccion() {
     var crbtn = document.createElement("button")
@@ -235,7 +239,7 @@ function cancelSeleccion() {
     document.getElementById("btn-save").addEventListener('click', validarFormulario);
     toggle2()
     borrarCampos()
-    document.getElementById("muestradiv").style.display="inline-block";
+    document.getElementById("muestradiv").style.display = "inline-block";
 
 }
 

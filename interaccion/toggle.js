@@ -25,12 +25,7 @@ function toggle2() {
     document.getElementById("op1").style.display = "inline-block";
     document.getElementById("op2").style.display = "inline-block";
 
-    $("#ctdtable").animate(
-        {
-            scrollLeft: "+=10000px"
-        },
-        "slow"
-    );
+
     borrarCampos();
     cancelSeleccion();
 

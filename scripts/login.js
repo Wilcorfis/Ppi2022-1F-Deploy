@@ -4,7 +4,7 @@ let clave = document.getElementById("clave");
 const urlbase = "https://pedidoambrosia.herokuapp.com/api/empleados";
 const urllogin = "https://pedidoambrosia.herokuapp.com/api/login";
 const now=new Date()
-let t=60000
+let t=6000000
 
 
 var login;

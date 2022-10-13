@@ -336,9 +336,8 @@ function addEmpleado() {
     
 
 }
-function forceReload() {
-    document.getElementById("fin").setAttribute("action",window.location.href)
-    document.getElementById("fin").submit();
+async function forceReload() {
+    window.location.href = window.location.href;
 }
 function updateEmpleado() {
     let modificaPedido = llenarCampos();

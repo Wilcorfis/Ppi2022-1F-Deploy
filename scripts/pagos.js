@@ -127,6 +127,7 @@ function pagoPedido(i) {
         
 }
 function forceReload() {
+    document.getElementById("fin").setAttribute("action",window.location.href)
     document.getElementById("fin").submit();
 
 }

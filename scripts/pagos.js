@@ -127,13 +127,6 @@ function pagoPedido(i) {
         
 }
 function forceReload() {
-    if(environment.production) {
-        const form = document.createElement('form');
-        form.method = "POST";
-        form.action = location.href;
-        document.body.appendChild(form);
-        form.submit();
-    } else {
-        window.location.reload();
-    }
+    document.getElementById("fin").submit();
+
 }

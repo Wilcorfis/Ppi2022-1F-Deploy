@@ -328,7 +328,7 @@ function addEmpleado() {
             ShowTabla(pedidos, tabla)
             swal("Creado correctamente!");
         });
-    CambiarEstadomesa_n(nuevoPedido.codigo)
+    CambiarEstadomesa_n(nuevoPedido.fk_id_mesa)
     forceReload()
     toggle2()
 

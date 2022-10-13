@@ -108,7 +108,7 @@ function CambiarEstadomesa_s(id) {
 
 //ACTUALIZA ESTADO PEDIDO A TERMINADO
 function pagoPedido(i) {
-    CambiarEstadomesa_s(detalle_pedidos[i].fk_id_mesa)
+    CambiarEstadomesa_s(detalle_pedidos[i].codigo)
     myIndexid = detalle_pedidos[i].fk_id_pedido;
     myIndex = i;
     fetch(urldetalle_pedido + "/" + myIndexid, {
@@ -123,6 +123,17 @@ function pagoPedido(i) {
 
 
         });
-        //location.reload(true)
+        forceReload()
         
+}
+function forceReload() {
+    if(environment.production) {
+        const form = document.createElement('form');
+        form.method = "POST";
+        form.action = location.href;
+        document.body.appendChild(form);
+        form.submit();
+    } else {
+        window.location.reload();
+    }
 }

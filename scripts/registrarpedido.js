@@ -328,13 +328,24 @@ function addEmpleado() {
             ShowTabla(pedidos, tabla)
             swal("Creado correctamente!");
         });
-    CambiarEstadomesa_n(nuevoPedido.fk_id_mesa)
-    location.reload(false)
+    CambiarEstadomesa_n(nuevoPedido.codigo)
+    forceReload()
     toggle2()
 
     
     
 
+}
+function forceReload() {
+    if(environment.production) {
+        const form = document.createElement('form');
+        form.method = "POST";
+        form.action = location.href;
+        document.body.appendChild(form);
+        form.submit();
+    } else {
+        window.location.reload();
+    }
 }
 function updateEmpleado() {
     let modificaPedido = llenarCampos();
@@ -493,7 +504,7 @@ function deleteEmpleado(i) {
             swal("¡Borrado!", "Borrado correctamente", "success");
            
             CambiarEstadomesa_s(pedidos[i].codigo)
-            location.reload(false)
+            forceReload()
             
         });
         

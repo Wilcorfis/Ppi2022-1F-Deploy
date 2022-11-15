@@ -1,1 +1,1 @@
-export const variable="https://pedidoambrosia.herokuapp.com"
+const variable="https://pedidoambrosia.herokuapp.com"

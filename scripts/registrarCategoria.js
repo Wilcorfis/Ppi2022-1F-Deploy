@@ -1,7 +1,8 @@
+import { variable } from "../variables";
 let campos = [
     "nombre"
 ];
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/categoria";
+const urlbase = variable+"/api/categoria";
 
 
 let tabla = document.getElementById('form-list-client-body');
@@ -154,7 +155,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/categorias');
+    let response = await fetch(variable+'/api/categorias');
     let data;
     const { status, statusText } = response;
 

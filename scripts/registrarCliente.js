@@ -1,3 +1,4 @@
+import { variable } from "../variables";
 let campos = [
     "identificacion",
     "primer_nombre",
@@ -26,11 +27,11 @@ let municipio = document.getElementById("fk_id_municipio");
 let genero = document.getElementById("fk_id_genero");
 
 let activo = document.getElementById("activo");
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/cliente";
+const urlbase = variable+"/api/cliente";
 
-const urlmunicipio = "https://pedidoambrosia.herokuapp.com/api/municipio";
-const urldepartamento = "https://pedidoambrosia.herokuapp.com/api/departamento";
-const urlgenero = "https://pedidoambrosia.herokuapp.com/api/genero";
+const urlmunicipio = variable+"/api/municipio";
+const urldepartamento = variable+"/api/departamento";
+const urlgenero = variable+"/api/genero";
 
 
 var myIndexid;
@@ -364,7 +365,7 @@ const ShowTabla = (data, container) => {
 
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/clientes');
+    let response = await fetch(variable+'/api/clientes');
     let data;
     const { status, statusText } = response;
 
@@ -379,7 +380,7 @@ async function fetchText() {
 
 async function getGeneros() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/generos');
+    let response = await fetch(variable+'/api/generos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -391,7 +392,7 @@ async function getGeneros() {
 
 async function getDepartamentos(id_pais) {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/departamentos');
+    let response = await fetch(variable+'/api/departamentos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -400,7 +401,7 @@ async function getDepartamentos(id_pais) {
     }
 }
 async function getMunicipios(id_departamento) {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/municipios/' + id_departamento);
+    let response = await fetch(variable+'/api/municipios/' + id_departamento);
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

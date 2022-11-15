@@ -1,3 +1,4 @@
+import { variable } from "../../../variables";
 function sumar(){
     var total_col1 = 0;
     //Recorro todos los tr ubicados en el tbody
@@ -21,7 +22,7 @@ function isHidden(el) {
 }
 let tabla = document.getElementById('form-list-client-body');
 
-const urldetalle_pedido = "https://pedidoambrosia.herokuapp.com/api/detalle_pedidopago2";
+const urldetalle_pedido = variable+"/api/detalle_pedidopago2";
 var myIndexid;
 var myIndex;
 
@@ -66,7 +67,7 @@ const ShowTabla = (data, container) => {
 
 
             if (a.includes('fk_id_mesa')) {
-                fetch("https://pedidoambrosia.herokuapp.com/api/mesa" + "/" + data[i][a], {
+                fetch(variable+"/api/mesa" + "/" + data[i][a], {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json;charset=UTF-8'

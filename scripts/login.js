@@ -1,8 +1,9 @@
+import { variable } from "../variables";
 let identificacion = document.getElementById("identificacion");
 let clave = document.getElementById("clave");
 
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/empleados";
-const urllogin = "https://pedidoambrosia.herokuapp.com/api/login";
+const urlbase = variable+"/api/empleados";
+const urllogin = variable+"/api/login";
 const now=new Date()
 let t=6000000
 
@@ -47,7 +48,7 @@ function validarFormulario(evento) {
 
 
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/empleados');
+    let response = await fetch(variable+'/api/empleados');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

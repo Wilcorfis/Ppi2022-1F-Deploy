@@ -1,3 +1,4 @@
+import { variable } from "../variables";
 let campos = [
     "nombre",
     "fk_id_categoria",
@@ -9,12 +10,12 @@ let campos2 = [
     "costo",
     "activo"
 ];
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/plato";
+const urlbase = variable+"/api/plato";
 let tabla = document.getElementById('form-list-client-body');
 let categoria = document.getElementById("fk_id_categoria");
 let activo = document.getElementById("activo");
 
-const urlcategoria = "https://pedidoambrosia.herokuapp.com/api/categoria";
+const urlcategoria = variable+"/api/categoria";
 
 
 var myIndexid;
@@ -233,7 +234,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/platos');
+    let response = await fetch(variable+'/api/platos');
     let data;
     const { status, statusText } = response;
 
@@ -243,7 +244,7 @@ async function fetchText() {
     }
 }
 async function getCategorias() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/categorias');
+    let response = await fetch(variable+'/api/categorias');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

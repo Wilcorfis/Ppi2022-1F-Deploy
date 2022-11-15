@@ -1,5 +1,5 @@
 
-
+import { variable } from "../variables";
 let campos = [
     "descripcion",
     "fk_id_ingrediente",
@@ -7,15 +7,15 @@ let campos = [
     "cantidad",
     "unidad"
 ];
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/receta_ingrediente";
+const urlbase = variable+"/api/receta_ingrediente";
 let tabla = document.getElementById('form-list-client-body');
 
 let ingrediente = document.getElementById("fk_id_ingrediente");
 let receta = document.getElementById("fk_id_receta");
 
 
-const urlingrediente = "https://pedidoambrosia.herokuapp.com/api/ingrediente";
-const urlreceta = "https://pedidoambrosia.herokuapp.com/api/receta";
+const urlingrediente = variable+"/api/ingrediente";
+const urlreceta = variable+"/api/receta";
 
 var myIndexid;
 var myIndex;
@@ -230,7 +230,7 @@ const ShowTabla = (data, container) => {
 
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/receta_ingredientes');
+    let response = await fetch(variable+'/api/receta_ingredientes');
     let data;
     const { status, statusText } = response;
 
@@ -244,7 +244,7 @@ async function fetchText() {
 }
 async function getRecetas() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/recetas');
+    let response = await fetch(variable+'/api/recetas');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -254,7 +254,7 @@ async function getRecetas() {
 }
 async function getIngredientes() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/ingredientes');
+    let response = await fetch(variable+'/api/ingredientes');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

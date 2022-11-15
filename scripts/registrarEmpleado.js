@@ -1,3 +1,4 @@
+import { variable } from "../variables";
 let campos = [
     "tipo_empleado",
     "identificacion",
@@ -41,13 +42,13 @@ let municipio = document.getElementById("municipio");//contenedor2
 let genero = document.getElementById("genero");
 let tipo_empleado = document.getElementById("tipo_empleado");
 let activo = document.getElementById("activo");
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/empleado";
+const urlbase = variable+"/api/empleado";
 
-const urlmunicipio = "https://pedidoambrosia.herokuapp.com/api/municipio";
-const urldepartamento = "https://pedidoambrosia.herokuapp.com/api/departamento";
-const urltipo_empleado = "https://pedidoambrosia.herokuapp.com/api/tipo_empleado";
-const urlgenero = "https://pedidoambrosia.herokuapp.com/api/genero";
-const urlhorario = "https://pedidoambrosia.herokuapp.com/api/horario";
+const urlmunicipio = variable+"/api/municipio";
+const urldepartamento = variable+"/api/departamento";
+const urltipo_empleado = variable+"/api/tipo_empleado";
+const urlgenero = variable+"/api/genero";
+const urlhorario = variable+"/api/horario";
 
 var myIndexid;
 var myIndex;
@@ -562,7 +563,7 @@ const ShowTabla = (data, container) => {
 
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/empleados');
+    let response = await fetch(variable+'/api/empleados');
     let data;
     const { status, statusText } = response;
 
@@ -576,7 +577,7 @@ async function fetchText() {
 }
 async function getTipoEmpleados() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/tipo_empleados');
+    let response = await fetch(variable+'/api/tipo_empleados');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -586,7 +587,7 @@ async function getTipoEmpleados() {
 }
 async function getGeneros() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/generos');
+    let response = await fetch(variable+'/api/generos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -596,7 +597,7 @@ async function getGeneros() {
 }
 async function getHorarios() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/horarios');
+    let response = await fetch(variable+'/api/horarios');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -615,7 +616,7 @@ async function getHorarios() {
 }*/
 async function getDepartamentos() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/departamentos');
+    let response = await fetch(variable+'/api/departamentos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -624,7 +625,7 @@ async function getDepartamentos() {
     }
 }
 async function getMunicipios(id_departamento) {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/municipios/' + id_departamento);
+    let response = await fetch(variable+'/api/municipios/' + id_departamento);
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

@@ -1,9 +1,10 @@
+import { variable } from "../variables";
 let campos = [
     "hora_entrada",
     "hora_salida",
     "dias"
 ];
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/horario";
+const urlbase = variable+"/api/horario";
 
 
 let tabla = document.getElementById('form-list-client-body');
@@ -172,7 +173,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/horarios');
+    let response = await fetch(variable+'/api/horarios');
     let data;
     const { status, statusText } = response;
 

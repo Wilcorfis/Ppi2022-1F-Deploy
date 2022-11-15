@@ -1,5 +1,5 @@
-
-const u = "https://pedidoambrosia.herokuapp.com/api/empleados";
+import { variable } from "../variables";
+const u = variable+"/api/empleados";
 function get() {
     
     if (localStorage.getItem("id")) {

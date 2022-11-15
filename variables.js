@@ -1,0 +1,1 @@
+export const variable="https://pedidoambrosia.herokuapp.com"

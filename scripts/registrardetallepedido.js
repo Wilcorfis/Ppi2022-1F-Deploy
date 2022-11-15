@@ -1,3 +1,4 @@
+import { variable } from "../variables";
 let campos = [
     "fk_id_pedido",
     "fk_id_plato"
@@ -9,11 +10,11 @@ let pedido = document.getElementById("fk_id_pedido");
 let plato = document.getElementById("fk_id_plato");
 
 
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/detalle_pedido";
+const urlbase = variable+"/api/detalle_pedido";
 
-const urlpedido = "https://pedidoambrosia.herokuapp.com/api/pedido";
-const urlmesa = "https://pedidoambrosia.herokuapp.com/api/meso";
-const urlplato = "https://pedidoambrosia.herokuapp.com/api/platos";
+const urlpedido = variable+"/api/pedido";
+const urlmesa = variable+"/api/meso";
+const urlplato = variable+"/api/platos";
 
 
 var myIndexid;
@@ -234,7 +235,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/detalle_pedidos');
+    let response = await fetch(variable+'/api/detalle_pedidos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -246,7 +247,7 @@ async function fetchText() {
 
 async function getPedidos() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/pedidos');
+    let response = await fetch(variable+'/api/pedidos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -256,7 +257,7 @@ async function getPedidos() {
 }
 async function getPlatos() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/platos');
+    let response = await fetch(variable+'/api/platos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -410,7 +411,7 @@ function elpedido(url, i, t) {
 
 function CambiarEstadomesa_n(id) {
 
-    fetch("https://pedidoambrosia.herokuapp.com/api/mesaestadon" + "/" + id, {
+    fetch(variable+"/api/mesaestadon" + "/" + id, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'

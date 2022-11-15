@@ -1,3 +1,4 @@
+import { variable } from "../variables";
 let campos = [
     "fk_id_cliente",
     "fk_id_empleado",
@@ -9,11 +10,11 @@ let cliente = document.getElementById("fk_id_cliente");
 let empleado = document.getElementById("fk_id_empleado");
 let mesa = document.getElementById("fk_id_mesa");
 
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/pedido";
+const urlbase = variable+"/api/pedido";
 
-const urlcliente = "https://pedidoambrosia.herokuapp.com/api/cliente";
-const urlempleado = "https://pedidoambrosia.herokuapp.com/api/empleado";
-const urlmesa = "https://pedidoambrosia.herokuapp.com/api/mesa";
+const urlcliente = variable+"/api/cliente";
+const urlempleado = variable+"/api/empleado";
+const urlmesa = variable+"/api/mesa";
 
 var myIndexid;
 var myIndex;
@@ -248,7 +249,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/pedidos');
+    let response = await fetch(variable+'/api/pedidos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -260,7 +261,7 @@ async function fetchText() {
 
 async function getClientes() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/clientes');
+    let response = await fetch(variable+'/api/clientes');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -270,7 +271,7 @@ async function getClientes() {
 }
 async function getEmpleados() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/empleadosw');
+    let response = await fetch(variable+'/api/empleadosw');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -280,7 +281,7 @@ async function getEmpleados() {
 }
 async function getMesas() {
 
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/mesas');
+    let response = await fetch(variable+'/api/mesas');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {
@@ -428,7 +429,7 @@ function getnombres(url, i, t) {
 }
 function CambiarEstadomesa_n(id) {
 
-    fetch("https://pedidoambrosia.herokuapp.com/api/mesaestadon" + "/" + id, {
+    fetch(variable+"/api/mesaestadon" + "/" + id, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'
@@ -442,7 +443,7 @@ function CambiarEstadomesa_n(id) {
 }
 function CambiarEstadomesa_s(id) {
     
-    fetch("https://pedidoambrosia.herokuapp.com/api/mesaestados" + "/" + id, {
+    fetch(variable+"/api/mesaestados" + "/" + id, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'

@@ -1,12 +1,13 @@
+import { variable } from "../variables";
 let campos = [
     "fk_id_plato",
     "nombre_receta"
 ];
-const urlbase = "https://pedidoambrosia.herokuapp.com/api/receta";
+const urlbase = variable+"/api/receta";
 let tabla = document.getElementById('form-list-client-body');
 let plato = document.getElementById("fk_id_plato");
 
-const urlplato = "https://pedidoambrosia.herokuapp.com/api/plato";
+const urlplato = variable+"/api/plato";
 
 
 var myIndexid;
@@ -158,7 +159,7 @@ const ShowTabla = (data, container) => {
     borrarCampos();
 }
 async function fetchText() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/recetas');
+    let response = await fetch(variable+'/api/recetas');
     let data;
     const { status, statusText } = response;
 
@@ -168,7 +169,7 @@ async function fetchText() {
     }
 }
 async function getPlatos() {
-    let response = await fetch('https://pedidoambrosia.herokuapp.com/api/platos');
+    let response = await fetch(variable+'/api/platos');
     let data;
     const { status, statusText } = response;
     if (response.status === 200) {

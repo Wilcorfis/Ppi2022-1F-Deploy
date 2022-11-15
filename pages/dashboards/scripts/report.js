@@ -1,4 +1,4 @@
-import { variable } from "../../../variables";
+
 function sumar(){
     var total_col1 = 0;
     //Recorro todos los tr ubicados en el tbody

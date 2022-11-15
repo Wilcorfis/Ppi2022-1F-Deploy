@@ -1,4 +1,4 @@
-import { variable } from "../variables";
+
 let campos = [
     "nombre",
     "fk_id_categoria",

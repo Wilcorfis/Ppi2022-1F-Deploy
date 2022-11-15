@@ -1,5 +1,5 @@
 
-import { variable } from "../variables";
+
 let campos = [
     "descripcion",
     "fk_id_ingrediente",

@@ -1,4 +1,4 @@
-import { variable } from "../variables";
+
 const u = variable+"/api/empleados";
 function get() {
     

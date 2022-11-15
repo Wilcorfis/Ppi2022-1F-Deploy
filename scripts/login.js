@@ -1,4 +1,4 @@
-import { variable } from "../variables";
+
 let identificacion = document.getElementById("identificacion");
 let clave = document.getElementById("clave");
 

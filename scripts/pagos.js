@@ -1,4 +1,4 @@
-import { variable } from "../variables";
+
 let tabla = document.getElementById('form-list-client-body');
 
 const urldetalle_pedido = variable+"/api/detalle_pedidopago";

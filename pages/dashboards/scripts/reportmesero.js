@@ -1,4 +1,4 @@
-import { variable } from "../../../variables";
+
 let tablita = document.getElementById('form-list-client-body2');
 
 const urlConsultameseros = variable+"/api/meseros";

@@ -1,4 +1,4 @@
-import { variable } from "../variables";
+
 let campos = [
     "hora_entrada",
     "hora_salida",

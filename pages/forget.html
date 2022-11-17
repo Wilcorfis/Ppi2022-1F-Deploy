@@ -25,7 +25,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger"><img width="110px" height="80px" src="../image/ambrosia.jpg"></img></a>
+            <a class="navbar-brand js-scroll-trigger"><img width="110px" height="80px"
+                    src="../image/ambrosia.jpg"></img></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -63,7 +64,8 @@
                                     placeholder="Enter email address" required="required" autofocus="autofocus">
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-block" onclick="sendmail()">Restablecer la
+                        <button class="btn btn-primary btn-block"
+                            onclick="sendmail(document.getElementById('inputEmail'))">Restablecer la
                             contraseña</button>
                     </form>
                 </div>
@@ -85,7 +87,8 @@
             <div class="col-md-4">
                 <ul class="list-inline social-buttons">
                     <li class="list-inline-item">
-                        <a href="https://api.whatsapp.com/send/?phone=573104016514&text&type=phone_number&app_absent=0" target="_blank">
+                        <a href="https://api.whatsapp.com/send/?phone=573104016514&text&type=phone_number&app_absent=0"
+                            target="_blank">
                             <i class="fa fa-whatsapp"></i>
                         </a>
                     </li>
@@ -118,20 +121,24 @@
     </script>
 
     <script type="text/javascript">
-        function sendmail() {
+        function sendmail(q) {
+            if (q) {
 
-            Email.send({
-                Host: "smtp.gmail.com",
-                Username: "sender@email_address.com",
-                Password: "Enter your password",
-                To: 'receiver@email_address.com',
-                From: "sender@email_address.com",
-                Subject: "Sending Email using javascript",
-                Body: "Well that was easy!!",
-            })
-                .then(function (message) {
-                    alert("se ha enviado el correo")
-                });
+
+
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "computboost@gmail.com",
+                    Password: "wilmerap",
+                    To: q.value,
+                    From: "computboost@gmail.com",
+                    Subject: "Sending Email using javascript",
+                    Body: "su nueva clave es ",
+                })
+                    .then(function (message) {
+                        alert("se ha enviado el correo")
+                    });
+            }
 
         }
     </script>

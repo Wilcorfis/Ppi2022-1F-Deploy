@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="../variables.js"></script>
     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -64,11 +65,11 @@
                                     placeholder="Enter email address" required="required" autofocus="autofocus">
                             </div>
                         </div>
+                        <input type="submit" class="s btn btn-primary btn-block" value="Restablecer la
+                        contraseña">
 
                     </form>
-                    <button class="btn btn-primary btn-block"
-                    onclick="sendmail(document.getElementById('inputEmail'))">Restablecer la
-                    contraseña</button>
+                    <div class="mail-data"></div>
                 </div>
             </div>
         </div>
@@ -118,31 +119,47 @@
         </div>
     </footer>
 
-    <script src="https://smtpjs.com/v3/smtp.js">
-    </script>
+
+
 
     <script type="text/javascript">
-        function sendmail(q) {
-            if (q) {
-                alert(q.value)
+        const email_to = document.querySelector('#inputEmail');
+        const subject = "cambio de contraseña";
+        const message = "hola mundo"
+        const submit = document.querySelector('.s');
+        const mail_data = document.querySelector('.mail-data');
+        mail_data.innerHTML = '';
 
+        submit.onclick = () => {
 
+            if (email_to.value.length == 0 || subject.value.length == 0 || message.value.length == 0)
+                submit.type = 'submit';
+            else {
+                submit.type = 'button';
 
-                Email.send({
-                    Host: "smtp.gmail.com",
-                    Username: "computboost@gmail.com",
-                    Password: "wilmerap",
-                    To: q.value,
-                    From: "computboost@gmail.com",
-                    Subject: "Sending Email using javascript",
-                    Body: "su nueva clave es ",
+                fetch('https://movers-san-francisco.com/email_sender.php', {
+                    method: 'POST',
+                    'Accept': 'application/json',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'email_message=' + JSON.stringify({
+                        'mail_to': email_to.value,
+                        'mail_subject': subject,
+                        'mail_message': message
+                    })
+                }).then(response => response.json()).then(data => {
+
+                    if (data.result == 'success') {
+                        mail_data.innerHTML = `Correo fue enviado a ${data.email_to}<br>` + mail_data.innerHTML;
+                        console.log(data);
+                    }
+                    else
+                        mail_data.innerHTML = 'Error enviando correo!<br>' + mail_data.innerHTML;
+
                 })
-                    .then(function (message) {
-                        alert("se ha enviado el correo")
-                    });
             }
-
         }
+
+
     </script>
 
 </body>

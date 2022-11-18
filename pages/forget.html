@@ -169,6 +169,7 @@
         const mail_data = document.querySelector('.mail-data');
         mail_data.innerHTML = '';
         for (let e = 0; e < correos.length; e++) {
+            alert(correos[e]["correo"])
 
 
 
@@ -206,7 +207,7 @@
                 }
                 break;
             }
-            if (correos[e] != email_to.value) {
+            if (correos[e].correo != email_to.value) {
                 mail_data.innerHTML = 'no se encuentra registrado el correo!<br>' + mail_data.innerHTML;
             }
 

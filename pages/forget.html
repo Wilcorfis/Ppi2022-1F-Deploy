@@ -123,21 +123,7 @@
 
 
     <script type="text/javascript">
-        function Cambiarcontrasena(id) {
-            
 
-            fetch(variable + "/api/empleadonuevaclave" + "/" + id, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            }).then(response => response.json())
-                .then(json => {
-                    console.log(json);
-
-                });
-            return "completado"
-        }
         let empleados = [];
         let correos = [];
         let identificaciones = [];
@@ -183,9 +169,9 @@
         const mail_data = document.querySelector('.mail-data');
         mail_data.innerHTML = '';
         for (let e = 0; e < correos.length; e++) {
-            alert(correos[e])
+           
             if (correos[e] == email_to.value) {
-                //Cambiarcontrasena(identificaciones[e])
+                
 
                 submit.onclick = () => {
                     if (email_to.value.length == 0 || subject.length == 0 || message.length == 0)

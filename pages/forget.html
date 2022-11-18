@@ -124,7 +124,7 @@
 
     <script type="text/javascript">
         function Cambiarcontrasena(id) {
-            alert("hola")
+            
 
             fetch(variable + "/api/empleadonuevaclave" + "/" + id, {
                 method: 'PATCH',
@@ -184,7 +184,7 @@
         mail_data.innerHTML = '';
         for (let e = 0; e < correos.length; e++) {
             if (correos[e] == email_to.value) {
-                Cambiarcontrasena(identificaciones[e])
+                //Cambiarcontrasena(identificaciones[e])
 
                 submit.onclick = () => {
                     if (email_to.value.length == 0 || subject.length == 0 || message.length == 0)

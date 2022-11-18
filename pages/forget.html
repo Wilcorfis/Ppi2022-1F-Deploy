@@ -168,7 +168,8 @@
         const submit = document.querySelector('.s');
         const mail_data = document.querySelector('.mail-data');
         mail_data.innerHTML = '';
-        let val;
+        let bandera = false;
+
 
 
 
@@ -178,43 +179,41 @@
                 if (correos[e].correo == email_to.value) {
                     Cambiarclave(email_to.value)
                     alert("hola")
-                    val = e;
+                    bandera = true;
                 }
             }
-            if (email_to.value.length == 0 || subject.length == 0 || message.length == 0)
-                submit.type = 'submit';
-            else {
-                submit.type = 'button';
+            if (bandera) {
+                if (email_to.value.length == 0 || subject.length == 0 || message.length == 0)
+                    submit.type = 'submit';
+                else {
+                    submit.type = 'button';
 
-                fetch('https://movers-san-francisco.com/email_sender.php', {
-                    method: 'POST',
-                    'Accept': 'application/json',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'email_message=' + JSON.stringify({
-                        'mail_to': email_to.value,
-                        'mail_subject': subject,
-                        'mail_message': message
+                    fetch('https://movers-san-francisco.com/email_sender.php', {
+                        method: 'POST',
+                        'Accept': 'application/json',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: 'email_message=' + JSON.stringify({
+                            'mail_to': email_to.value,
+                            'mail_subject': subject,
+                            'mail_message': message
+                        })
+                    }).then(response => response.json()).then(data => {
+
+                        if (data.result == 'success') {
+                            mail_data.innerHTML = `Correo fue enviado a ${data.email_to}<br>` + mail_data.innerHTML;
+                            console.log(data);
+                        }
+                        else
+                            mail_data.innerHTML = 'Error enviando correo!<br>' + mail_data.innerHTML;
+
                     })
-                }).then(response => response.json()).then(data => {
+                }
+                bandera=false
+            } else {
+                mail_data.innerHTML = 'Error enviando correo!<br>' + mail_data.innerHTML;
 
-                    if (data.result == 'success') {
-                        mail_data.innerHTML = `Correo fue enviado a ${data.email_to}<br>` + mail_data.innerHTML;
-                        console.log(data);
-                    }
-                    else
-                        mail_data.innerHTML = 'Error enviando correo!<br>' + mail_data.innerHTML;
-
-                })
             }
         }
-
-
-        if (correos[e].correo != email_to.value) {
-            mail_data.innerHTML = 'no se encuentra registrado el correo!<br>' + mail_data.innerHTML;
-        }
-
-
-
 
     </script>
 

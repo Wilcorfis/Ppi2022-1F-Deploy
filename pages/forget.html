@@ -124,11 +124,11 @@
 
     <script type="text/javascript">
 
-        let empleados = [];
+
         let correos = [];
-        let identificaciones = [];
+
         async function fetchText() {
-            let response = await fetch(variable + '/api/empleados');
+            let response = await fetch(variable + '/api/empleadocorreo');
             let data;
             const { status, statusText } = response;
 
@@ -140,22 +140,23 @@
             }
 
         }
+        function Cambiarclave(id) {
+
+            fetch(variable + "/api/empleadoclave" + "/" + id, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            }).then(response => response.json())
+                .then(json => {
+                    console.log(json);
+
+                });
+            return "completado"
+        }
         document.addEventListener('DOMContentLoaded', async () => {
             fetchText().then(res => {
-                empleados.push(...res);
-                for (let i = 0; i < empleados.length; i++) {
-
-                    for (let a in empleados[i]) {
-                        if (a.includes("correo")) {
-                            correos.push(empleados[i][a])
-                            alert(...correos)
-                        }
-                       
-
-                    }
-                }
-
-
+                correos.push(...res);
             })
 
 
@@ -168,9 +169,13 @@
         const mail_data = document.querySelector('.mail-data');
         mail_data.innerHTML = '';
         for (let e = 0; e < correos.length; e++) {
-           
+
+
+
             if (correos[e] == email_to.value) {
-                
+                Cambiarclave(email_to.value)
+
+
 
                 submit.onclick = () => {
                     if (email_to.value.length == 0 || subject.length == 0 || message.length == 0)
@@ -185,7 +190,7 @@
                             body: 'email_message=' + JSON.stringify({
                                 'mail_to': email_to.value,
                                 'mail_subject': subject,
-                                'mail_message': message 
+                                'mail_message': message
                             })
                         }).then(response => response.json()).then(data => {
 
